@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة آفاق المشكاة التعليمية</title>
+    <!-- استيراد خط تجوال المحترف للغة العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d2c54; /* كحلي وقور */
+            --secondary-color: #c5a880; /* ذهبي هادئ */
+            --bg-light: #f9f9fb;
+            --text-dark: #2b2b2b;
+            --white: #ffffff;
+            --success: #2ecc71;
+            --error: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #164275;
+        }
+
+        /* القسم الترحيبي البطل */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a4a80 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/islamic-caliphate.png');
+            opacity: 0.05;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            background-color: #d4b993;
+        }
+
+        /* قسم المحتوى الرئيسي والمواد */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .section-title h3 {
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* شبكة المواد الخمس */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .subject-card {
+            background-color: var(--white);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover, .subject-card.active {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .subject-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .subject-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        /* منطقة استعراض محتوى المادة التفاعلي */
+        .content-display-area {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            display: none;
+        }
+
+        /* الغرفة الدراسية الذكية */
+        .study-room {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* 1. محاكي العروض */
+        .ppt-simulator {
+            background-color: #f0f4f8;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 2. بطاقات الاستذكار */
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+            height: 180px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            text-align: center;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .card-back {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: rotateY(180deg);
+            font-weight: bold;
+        }
+
+        /* 3. الاختبار القصير التفاعلي */
+        .quiz-box {
+            background-color: #fffdf9;
+            border: 1px solid #f3ebd9;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            background-color: var(--white);
+            border: 1px solid #dcdcdc;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .option-btn.correct {
+            background-color: var(--success);
+            color: var(--white);
+            border-color: var(--success);
+        }
+
+        .option-btn.wrong {
+            background-color: var(--error);
+            color: var(--white);
+            border-color: var(--error);
+        }
+
+        .feedback-msg {
+            margin-top: 15px;
+            font-weight: 700;
+            text-align: center;
+            min-height: 24px;
+        }
+
+        /* التذييل / أسفل الموقع وطرق التواصل */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-channels {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* تعديلات الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .hero-content h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <i class="fa-solid : fa-book-quran logo-icon"></i>
+                <div class="logo-text">
+                    <h1>منصة آفاق المشكاة</h1>
+                    <p>للعلوم الإسلامية</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#subjects-section">المواد الدراسية</a></li>
+                <li><a href="#contact-section">تواصل معنا</a></li>
+            </ul>
+            <a href="https://wa.me/YOUR_NUMBER_HERE" target="_blank" class="contact-btn">
+                <i class="fa-brands fa-whatsapp"></i> تسجيل سريع
+            </a>
+        </div>
+    </header>
+
+    <!-- القسم الترحيبي (البطل) -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>آفاق المشكاة.. نورٌ يضيء رحلتهم التعليمية.</h2>
+            <p>منصتكم المتكاملة للعلوم الإسلامية من الصف الأول الابتدائي وحتى الثالث الثانوي. نتميز حالياً بإطلاق قسم الصف الأول المتوسط بأسلوب رقمي تفاعلي فريد.</p>
+            <a href="#subjects-section" class="cta-btn">استكشف مواد الصف الأول المتوسط الآن</a>
+        </div>
+    </section>
+
+    <!-- القسم الرئيسي للمواد الخمس -->
+    <main class="main-container" id="subjects-section">
+        <div class="section-title">
+            <h3>منهج الصف الأول المتوسط</h3>
+            <p style="color: #666; margin-top: 5px;">اختر المادة لتفتح لك الغرفة التعليمية الذكية الخاصة بها</p>
+        </div>
+
+        <!-- شبكة المواد الخمس -->
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="loadSubject('quran', this)">
+                <i class="fa-solid fa-star-and-crescent"></i>
+                <h4>القرآن الكريم</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('tawhid', this)">
+                <i class="fa-solid fa-kaaba"></i>
+                <h4>التوحيد</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('tafsir', this)">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h4>التفسير</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('hadith', this)">
+                <i class="fa-solid fa-scroll"></i>
+                <h4>الحديث</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('fiqh', this)">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h4>الفقه</h4>
+            </div>
+        </div>
+
+        <!-- الغرفة الذكية (تظهر عند الضغط على مادة) -->
+        <div class="content-display-area" id="content-display-area">
+            <h3 id="selected-subject-title" style="color: var(--primary-color); margin-bottom: 20px; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px;"></h3>
+            
+            <div class="study-room">
+                <!-- 1. محاكي الشريحة التفاعلية -->
+                <div class="ppt-simulator">
+                    <span style="color: var(--secondary-color); font-weight: bold; margin-bottom: 10px;"><i class="fa-solid fa-desktop"></i> شريحة العرض التفاعلية</span>
+                    <h4 id="slide-text" style="color: var(--primary-color); font-size: 1.4rem;">محتوى الشريحة الافتراضي</h4>
+                </div>
+
+                <!-- 2. بطاقات الفلاش كارد الذكية -->
+                <div style="text-align: center; margin-top: 15px;">
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 8px;"><i class="fa-solid fa-repeat"></i> اضغط على البطاقة لقلبها ومعرفة الإجابة</p>
+                    <div class="flashcard-container" onclick="toggleCard()">
+                        <div class="flashcard" id="flashcard">
+                            <div class="card-face card-front">
+                                <h4 id="card-front-text">السؤال المفهومي؟</h4>
+                            </div>
+                            <div class="card-face card-back">
+                                <p id="card-back-text">تعريف أو إجابة البطاقة الذكية الحافظة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. كويز تقييمي سريع -->
+                <div class="quiz-box">
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-circle-question"></i> اختبر نفسك سريعا:</h4>
+                    <p id="quiz-question" style="margin-top: 10px; font-weight: bold;">السؤال هنا؟</p>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- الخيارات تولد عبر الـ JavaScript -->
+                    </div>
+                    <div class="feedback-msg" id="feedback-msg"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الموقع وقنوات التواصل -->
+    <footer id="contact-section">
+        <div class="footer-content">
+            <h3>تواصل مباشرة مع إدارة منصة آفاق المشكاة</h3>
+            <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">يسعدنا استقبال استفساراتكم واقتراحاتكم لتطوير المنصة مباشرة عبر القنوات التالية:</p>
+            
+            <div class="social-channels">
+                <!-- يمكنك استبدال الرابط أدناه برقم الواتساب الخاص بك مباشرة كالتالي: https://wa.me/966500000000 -->
+                <a href="https://wa.me/YOUR_NUMBER_HERE" class="social-icon" title="واتساب" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="mailto:info@afaq-almeshkat.com" class="social-icon" title="البريد الإلكتروني">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="#" class="social-icon" title="منصة إكس (تويتر سابقاً)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 منصة آفاق المشكاة التعليمية. جميع الحقوق محفوظة.</p>
+                <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.5;">تطوير تقني متميز ودعم مستمر</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الجزء البرمجي الذكي للتفاعل وتحميل محتويات المواد -->
+    <script>
+        // قاعدة البيانات التجريبية للمواد الخمس المعتمدة
+        const subjectsData = {
+            quran: {
+                title: "مادة القرآن الكريم والتجويد",
+                slide: "الدرس الأول: تلاوة سورة الحجرات من الآية (1) إلى الآية (5) مع تطبيق أحكام المدود.",
+                cardFront: "ما هي القاعدة الأساسية في مد الصلة الصغرى؟",
+                cardBack: "أن تأتي هاء الضمير للمفرد الغائب المذكر بين حرفين متحركين.",
+                quizQ: "سورة الحجرات من السور:",
+                options: ["المكية", "المدنية", "التي نزلت في السفر"],
+                correctIndex: 1
+            },
+            tawhid: {
+                title: "مادة التوحيد العميقة",
+                slide: "الدرس الأول: العبادة وطاعتها - بيان مفهوم العبادة الشامل لكل ما يحبه الله ويرضاه.",
+                cardFront: "ما هي ركائز العبادة القلبية الثلاث؟",
+                cardBack: "المحبة، والخوف، والرجاء.",
+                quizQ: "العبادة هي اسم جامع لكل ما يحبه الله ويرضاه من الأقوال والأعمال:",
+                options: ["الظاهرة فقط", "الباطنة فقط", "الظاهرة والباطنة"],
+                correctIndex: 2
+            },
+            tafsir: {
+                title: "مادة التفسير ومبادئه",
+                slide: "الدرس الأول: مبادئ علم التفسير ونشأته وأهميته للمسلم لتدبر آيات الله.",
+                cardFront: "ما معنى التفسير في الاصطلاح؟",
+                cardBack: "بيان معاني القرآن الكريم وكشف المراد منها.",
+                quizQ: "أول من صنف في علم التفسير بشكل مستقل ومسند هم:",
+                options: ["أئمة الحديث", "علماء الفقه", "المؤرخون"],
+                correctIndex: 0
+            },
+            hadith: {
+                title: "مادة الحديث الشريف والسيرة",
+                slide: "الدرس الأول: عناية المسلمين بالسنّة النبوية الشريفة وتدوينها لحفظ الدين.",
+                cardFront: "من هو الملقب بـ أمير المؤمنين في الحديث؟",
+                cardBack: "الإمام البخاري رحمه الله.",
+                quizQ: "السنّة النبوية هي المصدر (...) من مصادر التشريع الإسلامي:",
+                options: ["الأول", "الثاني", "الثالث"],
+                correctIndex: 1
+            },
+            fiqh: {
+                title: "مادة الفقه والأحكام",
+                slide: "الدرس الأول: مقدمة في الفقه الطهارة - المياه وأقسامها وما يصح التطهر به.",
+                cardFront: "ما هو الماء الطهور؟",
+                cardBack: "هو الماء الباقي على خلقته التي خلقه الله عليها.",
+                quizQ: "إذا تغير طعم الماء أو لونه أو ريحه بنجاسة فإنه يصبح ماءً:",
+                options: ["طهوراً", "طاهراً غير مطهر", "نجساً"],
+                correctIndex: 2
+            }
+        };
+
+        let currentCorrect = 0;
+
+        function loadSubject(key, element) {
+            // إزالة الحالة النشطة من الكروت الأخرى
+            document.querySelectorAll('.subject-card').forEach(card => card.classList.remove('active'));
+            // تفعيل الكرت الحالي
+            element.classList.add('active');
+
+            const data = subjectsData[key];
+            
+            // تعبئة البيانات في الواجهة التفاعلية
+            document.getElementById('selected-subject-title').innerText = data.title;
+            document.getElementById('slide-text').innerText = data.slide;
+            document.getElementById('card-front-text').innerText = data.cardFront;
+            document.getElementById('card-back-text').innerText = data.cardBack;
+            document.getElementById('quiz-question').innerText = data.quizQ;
+            
+            // إرجاع الفلاش كارد لوجهها الأول إن كانت مقلوبة
+            document.getElementById('flashcard').classList.remove('flipped');
+
+            // بناء الخيارات للكويز السريع
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+            document.getElementById('feedback-msg').innerText = '';
+            currentCorrect = data.correctIndex;
+
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = function() { checkAnswer(idx, btn); };
+                optionsBox.appendChild(btn);
+            });
+
+            // إظهار صندوق المحتوى كاملاً بشكل سلس
+            const displayArea = document.getElementById('content-display-area');
+            displayArea.style.display = 'block';
+            displayArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // تفاعل قلب البطاقة الذكية
+        function toggleCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+
+        // تفاعل تصحيح الاختبار الفوري
+        function checkAnswer(selectedIndex, clickedBtn) {
+            const buttons = document.querySelectorAll('.option-btn');
+            const feedback = document.getElementById('feedback-msg');
+            
+            // تجميد الأزرار بعد الإجابة
+            buttons.forEach(btn => btn.disabled = true);
+
+            if(selectedIndex === currentCorrect) {
+                clickedBtn.classList.add('correct');
+                feedback.innerHTML = "<span style='color: var(--success);'><i class='fa-solid fa-circle-check'></i> إجابة ممتازة وصحيحة! بارك الله فيك.</span>";
+            } else {
+                clickedBtn.classList.add('wrong');
+                buttons[currentCorrect].classList.add('correct'); // إظهار الإجابة الصحيحة للطالب
+                feedback.innerHTML = "<span style='color: var(--error);'><i class='fa-solid fa-circle-xmark'></i> إجابة خاطئة، حاول مجدداً في الدرس القادم.</span>";
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة آفاق المشكاة التعليمية</title>
+    <!-- استيراد خط تجوال المحترف للغة العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d2c54; /* كحلي وقور */
+            --secondary-color: #c5a880; /* ذهبي هادئ */
+            --bg-light: #f9f9fb;
+            --text-dark: #2b2b2b;
+            --white: #ffffff;
+            --success: #2ecc71;
+            --error: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #164275;
+        }
+
+        /* القسم الترحيبي البطل */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a4a80 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/islamic-caliphate.png');
+            opacity: 0.05;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            background-color: #d4b993;
+        }
+
+        /* قسم المحتوى الرئيسي والمواد */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .section-title h3 {
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* شبكة المواد الخمس */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .subject-card {
+            background-color: var(--white);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover, .subject-card.active {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .subject-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .subject-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        /* منطقة استعراض محتوى المادة التفاعلي */
+        .content-display-area {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            display: none;
+        }
+
+        /* الغرفة الدراسية الذكية */
+        .study-room {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* 1. محاكي العروض */
+        .ppt-simulator {
+            background-color: #f0f4f8;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 2. بطاقات الاستذكار */
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+            height: 180px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            text-align: center;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .card-back {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: rotateY(180deg);
+            font-weight: bold;
+        }
+
+        /* 3. الاختبار القصير التفاعلي */
+        .quiz-box {
+            background-color: #fffdf9;
+            border: 1px solid #f3ebd9;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            background-color: var(--white);
+            border: 1px solid #dcdcdc;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .option-btn.correct {
+            background-color: var(--success);
+            color: var(--white);
+            border-color: var(--success);
+        }
+
+        .option-btn.wrong {
+            background-color: var(--error);
+            color: var(--white);
+            border-color: var(--error);
+        }
+
+        .feedback-msg {
+            margin-top: 15px;
+            font-weight: 700;
+            text-align: center;
+            min-height: 24px;
+        }
+
+        /* التذييل / أسفل الموقع وطرق التواصل */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-channels {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* تعديلات الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .hero-content h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <i class="fa-solid : fa-book-quran logo-icon"></i>
+                <div class="logo-text">
+                    <h1>منصة آفاق المشكاة</h1>
+                    <p>للعلوم الإسلامية</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#subjects-section">المواد الدراسية</a></li>
+                <li><a href="#contact-section">تواصل معنا</a></li>
+            </ul>
+            <a href="https://wa.me/YOUR_NUMBER_HERE" target="_blank" class="contact-btn">
+                <i class="fa-brands fa-whatsapp"></i> تسجيل سريع
+            </a>
+        </div>
+    </header>
+
+    <!-- القسم الترحيبي (البطل) -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>آفاق المشكاة.. نورٌ يضيء رحلتهم التعليمية.</h2>
+            <p>منصتكم المتكاملة للعلوم الإسلامية من الصف الأول الابتدائي وحتى الثالث الثانوي. نتميز حالياً بإطلاق قسم الصف الأول المتوسط بأسلوب رقمي تفاعلي فريد.</p>
+            <a href="#subjects-section" class="cta-btn">استكشف مواد الصف الأول المتوسط الآن</a>
+        </div>
+    </section>
+
+    <!-- القسم الرئيسي للمواد الخمس -->
+    <main class="main-container" id="subjects-section">
+        <div class="section-title">
+            <h3>منهج الصف الأول المتوسط</h3>
+            <p style="color: #666; margin-top: 5px;">اختر المادة لتفتح لك الغرفة التعليمية الذكية الخاصة بها</p>
+        </div>
+
+        <!-- شبكة المواد الخمس -->
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="loadSubject('quran', this)">
+                <i class="fa-solid fa-star-and-crescent"></i>
+                <h4>القرآن الكريم</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('tawhid', this)">
+                <i class="fa-solid fa-kaaba"></i>
+                <h4>التوحيد</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('tafsir', this)">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h4>التفسير</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('hadith', this)">
+                <i class="fa-solid fa-scroll"></i>
+                <h4>الحديث</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('fiqh', this)">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h4>الفقه</h4>
+            </div>
+        </div>
+
+        <!-- الغرفة الذكية (تظهر عند الضغط على مادة) -->
+        <div class="content-display-area" id="content-display-area">
+            <h3 id="selected-subject-title" style="color: var(--primary-color); margin-bottom: 20px; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px;"></h3>
+            
+            <div class="study-room">
+                <!-- 1. محاكي الشريحة التفاعلية -->
+                <div class="ppt-simulator">
+                    <span style="color: var(--secondary-color); font-weight: bold; margin-bottom: 10px;"><i class="fa-solid fa-desktop"></i> شريحة العرض التفاعلية</span>
+                    <h4 id="slide-text" style="color: var(--primary-color); font-size: 1.4rem;">محتوى الشريحة الافتراضي</h4>
+                </div>
+
+                <!-- 2. بطاقات الفلاش كارد الذكية -->
+                <div style="text-align: center; margin-top: 15px;">
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 8px;"><i class="fa-solid fa-repeat"></i> اضغط على البطاقة لقلبها ومعرفة الإجابة</p>
+                    <div class="flashcard-container" onclick="toggleCard()">
+                        <div class="flashcard" id="flashcard">
+                            <div class="card-face card-front">
+                                <h4 id="card-front-text">السؤال المفهومي؟</h4>
+                            </div>
+                            <div class="card-face card-back">
+                                <p id="card-back-text">تعريف أو إجابة البطاقة الذكية الحافظة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. كويز تقييمي سريع -->
+                <div class="quiz-box">
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-circle-question"></i> اختبر نفسك سريعا:</h4>
+                    <p id="quiz-question" style="margin-top: 10px; font-weight: bold;">السؤال هنا؟</p>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- الخيارات تولد عبر الـ JavaScript -->
+                    </div>
+                    <div class="feedback-msg" id="feedback-msg"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الموقع وقنوات التواصل -->
+    <footer id="contact-section">
+        <div class="footer-content">
+            <h3>تواصل مباشرة مع إدارة منصة آفاق المشكاة</h3>
+            <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">يسعدنا استقبال استفساراتكم واقتراحاتكم لتطوير المنصة مباشرة عبر القنوات التالية:</p>
+            
+            <div class="social-channels">
+                <!-- يمكنك استبدال الرابط أدناه برقم الواتساب الخاص بك مباشرة كالتالي: https://wa.me/966500000000 -->
+                <a href="https://wa.me/YOUR_NUMBER_HERE" class="social-icon" title="واتساب" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="mailto:info@afaq-almeshkat.com" class="social-icon" title="البريد الإلكتروني">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="#" class="social-icon" title="منصة إكس (تويتر سابقاً)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 منصة آفاق المشكاة التعليمية. جميع الحقوق محفوظة.</p>
+                <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.5;">تطوير تقني متميز ودعم مستمر</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الجزء البرمجي الذكي للتفاعل وتحميل محتويات المواد -->
+    <script>
+        // قاعدة البيانات التجريبية للمواد الخمس المعتمدة
+        const subjectsData = {
+            quran: {
+                title: "مادة القرآن الكريم والتجويد",
+                slide: "الدرس الأول: تلاوة سورة الحجرات من الآية (1) إلى الآية (5) مع تطبيق أحكام المدود.",
+                cardFront: "ما هي القاعدة الأساسية في مد الصلة الصغرى؟",
+                cardBack: "أن تأتي هاء الضمير للمفرد الغائب المذكر بين حرفين متحركين.",
+                quizQ: "سورة الحجرات من السور:",
+                options: ["المكية", "المدنية", "التي نزلت في السفر"],
+                correctIndex: 1
+            },
+            tawhid: {
+                title: "مادة التوحيد العميقة",
+                slide: "الدرس الأول: العبادة وطاعتها - بيان مفهوم العبادة الشامل لكل ما يحبه الله ويرضاه.",
+                cardFront: "ما هي ركائز العبادة القلبية الثلاث؟",
+                cardBack: "المحبة، والخوف، والرجاء.",
+                quizQ: "العبادة هي اسم جامع لكل ما يحبه الله ويرضاه من الأقوال والأعمال:",
+                options: ["الظاهرة فقط", "الباطنة فقط", "الظاهرة والباطنة"],
+                correctIndex: 2
+            },
+            tafsir: {
+                title: "مادة التفسير ومبادئه",
+                slide: "الدرس الأول: مبادئ علم التفسير ونشأته وأهميته للمسلم لتدبر آيات الله.",
+                cardFront: "ما معنى التفسير في الاصطلاح؟",
+                cardBack: "بيان معاني القرآن الكريم وكشف المراد منها.",
+                quizQ: "أول من صنف في علم التفسير بشكل مستقل ومسند هم:",
+                options: ["أئمة الحديث", "علماء الفقه", "المؤرخون"],
+                correctIndex: 0
+            },
+            hadith: {
+                title: "مادة الحديث الشريف والسيرة",
+                slide: "الدرس الأول: عناية المسلمين بالسنّة النبوية الشريفة وتدوينها لحفظ الدين.",
+                cardFront: "من هو الملقب بـ أمير المؤمنين في الحديث؟",
+                cardBack: "الإمام البخاري رحمه الله.",
+                quizQ: "السنّة النبوية هي المصدر (...) من مصادر التشريع الإسلامي:",
+                options: ["الأول", "الثاني", "الثالث"],
+                correctIndex: 1
+            },
+            fiqh: {
+                title: "مادة الفقه والأحكام",
+                slide: "الدرس الأول: مقدمة في الفقه الطهارة - المياه وأقسامها وما يصح التطهر به.",
+                cardFront: "ما هو الماء الطهور؟",
+                cardBack: "هو الماء الباقي على خلقته التي خلقه الله عليها.",
+                quizQ: "إذا تغير طعم الماء أو لونه أو ريحه بنجاسة فإنه يصبح ماءً:",
+                options: ["طهوراً", "طاهراً غير مطهر", "نجساً"],
+                correctIndex: 2
+            }
+        };
+
+        let currentCorrect = 0;
+
+        function loadSubject(key, element) {
+            // إزالة الحالة النشطة من الكروت الأخرى
+            document.querySelectorAll('.subject-card').forEach(card => card.classList.remove('active'));
+            // تفعيل الكرت الحالي
+            element.classList.add('active');
+
+            const data = subjectsData[key];
+            
+            // تعبئة البيانات في الواجهة التفاعلية
+            document.getElementById('selected-subject-title').innerText = data.title;
+            document.getElementById('slide-text').innerText = data.slide;
+            document.getElementById('card-front-text').innerText = data.cardFront;
+            document.getElementById('card-back-text').innerText = data.cardBack;
+            document.getElementById('quiz-question').innerText = data.quizQ;
+            
+            // إرجاع الفلاش كارد لوجهها الأول إن كانت مقلوبة
+            document.getElementById('flashcard').classList.remove('flipped');
+
+            // بناء الخيارات للكويز السريع
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+            document.getElementById('feedback-msg').innerText = '';
+            currentCorrect = data.correctIndex;
+
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = function() { checkAnswer(idx, btn); };
+                optionsBox.appendChild(btn);
+            });
+
+            // إظهار صندوق المحتوى كاملاً بشكل سلس
+            const displayArea = document.getElementById('content-display-area');
+            displayArea.style.display = 'block';
+            displayArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // تفاعل قلب البطاقة الذكية
+        function toggleCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+
+        // تفاعل تصحيح الاختبار الفوري
+        function checkAnswer(selectedIndex, clickedBtn) {
+            const <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة آفاق المشكاة التعليمية</title>
+    <!-- استيراد خط تجوال المحترف للغة العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0d2c54; /* كحلي وقور */
+            --secondary-color: #c5a880; /* ذهبي هادئ */
+            --bg-light: #f9f9fb;
+            --text-dark: #2b2b2b;
+            --white: #ffffff;
+            --success: #2ecc71;
+            --error: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .logo-text h1 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+        }
+
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #164275;
+        }
+
+        /* القسم الترحيبي البطل */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1a4a80 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/islamic-caliphate.png');
+            opacity: 0.05;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            background-color: #d4b993;
+        }
+
+        /* قسم المحتوى الرئيسي والمواد */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .section-title h3 {
+            font-size: 1.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* شبكة المواد الخمس */
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .subject-card {
+            background-color: var(--white);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+
+        .subject-card:hover, .subject-card.active {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .subject-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .subject-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        /* منطقة استعراض محتوى المادة التفاعلي */
+        .content-display-area {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            display: none;
+        }
+
+        /* الغرفة الدراسية الذكية */
+        .study-room {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        /* 1. محاكي العروض */
+        .ppt-simulator {
+            background-color: #f0f4f8;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* 2. بطاقات الاستذكار */
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+            height: 180px;
+            cursor: pointer;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            text-align: center;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .card-back {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: rotateY(180deg);
+            font-weight: bold;
+        }
+
+        /* 3. الاختبار القصير التفاعلي */
+        .quiz-box {
+            background-color: #fffdf9;
+            border: 1px solid #f3ebd9;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .option-btn {
+            background-color: var(--white);
+            border: 1px solid #dcdcdc;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: right;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .option-btn.correct {
+            background-color: var(--success);
+            color: var(--white);
+            border-color: var(--success);
+        }
+
+        .option-btn.wrong {
+            background-color: var(--error);
+            color: var(--white);
+            border-color: var(--error);
+        }
+
+        .feedback-msg {
+            margin-top: 15px;
+            font-weight: 700;
+            text-align: center;
+            min-height: 24px;
+        }
+
+        /* التذييل / أسفل الموقع وطرق التواصل */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 40px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-channels {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        /* تعديلات الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .hero-content h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <i class="fa-solid : fa-book-quran logo-icon"></i>
+                <div class="logo-text">
+                    <h1>منصة آفاق المشكاة</h1>
+                    <p>للعلوم الإسلامية</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#subjects-section">المواد الدراسية</a></li>
+                <li><a href="#contact-section">تواصل معنا</a></li>
+            </ul>
+            <a href="https://wa.me/YOUR_NUMBER_HERE" target="_blank" class="contact-btn">
+                <i class="fa-brands fa-whatsapp"></i> تسجيل سريع
+            </a>
+        </div>
+    </header>
+
+    <!-- القسم الترحيبي (البطل) -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>آفاق المشكاة.. نورٌ يضيء رحلتهم التعليمية.</h2>
+            <p>منصتكم المتكاملة للعلوم الإسلامية من الصف الأول الابتدائي وحتى الثالث الثانوي. نتميز حالياً بإطلاق قسم الصف الأول المتوسط بأسلوب رقمي تفاعلي فريد.</p>
+            <a href="#subjects-section" class="cta-btn">استكشف مواد الصف الأول المتوسط الآن</a>
+        </div>
+    </section>
+
+    <!-- القسم الرئيسي للمواد الخمس -->
+    <main class="main-container" id="subjects-section">
+        <div class="section-title">
+            <h3>منهج الصف الأول المتوسط</h3>
+            <p style="color: #666; margin-top: 5px;">اختر المادة لتفتح لك الغرفة التعليمية الذكية الخاصة بها</p>
+        </div>
+
+        <!-- شبكة المواد الخمس -->
+        <div class="subjects-grid">
+            <div class="subject-card" onclick="loadSubject('quran', this)">
+                <i class="fa-solid fa-star-and-crescent"></i>
+                <h4>القرآن الكريم</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('tawhid', this)">
+                <i class="fa-solid fa-kaaba"></i>
+                <h4>التوحيد</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('tafsir', this)">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h4>التفسير</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('hadith', this)">
+                <i class="fa-solid fa-scroll"></i>
+                <h4>الحديث</h4>
+            </div>
+            <div class="subject-card" onclick="loadSubject('fiqh', this)">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h4>الفقه</h4>
+            </div>
+        </div>
+
+        <!-- الغرفة الذكية (تظهر عند الضغط على مادة) -->
+        <div class="content-display-area" id="content-display-area">
+            <h3 id="selected-subject-title" style="color: var(--primary-color); margin-bottom: 20px; border-bottom: 2px solid var(--bg-light); padding-bottom: 10px;"></h3>
+            
+            <div class="study-room">
+                <!-- 1. محاكي الشريحة التفاعلية -->
+                <div class="ppt-simulator">
+                    <span style="color: var(--secondary-color); font-weight: bold; margin-bottom: 10px;"><i class="fa-solid fa-desktop"></i> شريحة العرض التفاعلية</span>
+                    <h4 id="slide-text" style="color: var(--primary-color); font-size: 1.4rem;">محتوى الشريحة الافتراضي</h4>
+                </div>
+
+                <!-- 2. بطاقات الفلاش كارد الذكية -->
+                <div style="text-align: center; margin-top: 15px;">
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 8px;"><i class="fa-solid fa-repeat"></i> اضغط على البطاقة لقلبها ومعرفة الإجابة</p>
+                    <div class="flashcard-container" onclick="toggleCard()">
+                        <div class="flashcard" id="flashcard">
+                            <div class="card-face card-front">
+                                <h4 id="card-front-text">السؤال المفهومي؟</h4>
+                            </div>
+                            <div class="card-face card-back">
+                                <p id="card-back-text">تعريف أو إجابة البطاقة الذكية الحافظة.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. كويز تقييمي سريع -->
+                <div class="quiz-box">
+                    <h4 style="color: var(--primary-color);"><i class="fa-solid fa-circle-question"></i> اختبر نفسك سريعا:</h4>
+                    <p id="quiz-question" style="margin-top: 10px; font-weight: bold;">السؤال هنا؟</p>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- الخيارات تولد عبر الـ JavaScript -->
+                    </div>
+                    <div class="feedback-msg" id="feedback-msg"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- تذييل الموقع وقنوات التواصل -->
+    <footer id="contact-section">
+        <div class="footer-content">
+            <h3>تواصل مباشرة مع إدارة منصة آفاق المشكاة</h3>
+            <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">يسعدنا استقبال استفساراتكم واقتراحاتكم لتطوير المنصة مباشرة عبر القنوات التالية:</p>
+            
+            <div class="social-channels">
+                <!-- يمكنك استبدال الرابط أدناه برقم الواتساب الخاص بك مباشرة كالتالي: https://wa.me/966500000000 -->
+                <a href="https://wa.me/YOUR_NUMBER_HERE" class="social-icon" title="واتساب" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="mailto:info@afaq-almeshkat.com" class="social-icon" title="البريد الإلكتروني">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="#" class="social-icon" title="منصة إكس (تويتر سابقاً)">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 منصة آفاق المشكاة التعليمية. جميع الحقوق محفوظة.</p>
+                <p style="font-size: 0.8rem; margin-top: 5px; opacity: 0.5;">تطوير تقني متميز ودعم مستمر</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الجزء البرمجي الذكي للتفاعل وتحميل محتويات المواد -->
+    <script>
+        // قاعدة البيانات التجريبية للمواد الخمس المعتمدة
+        const subjectsData = {
+            quran: {
+                title: "مادة القرآن الكريم والتجويد",
+                slide: "الدرس الأول: تلاوة سورة الحجرات من الآية (1) إلى الآية (5) مع تطبيق أحكام المدود.",
+                cardFront: "ما هي القاعدة الأساسية في مد الصلة الصغرى؟",
+                cardBack: "أن تأتي هاء الضمير للمفرد الغائب المذكر بين حرفين متحركين.",
+                quizQ: "سورة الحجرات من السور:",
+                options: ["المكية", "المدنية", "التي نزلت في السفر"],
+                correctIndex: 1
+            },
+            tawhid: {
+                title: "مادة التوحيد العميقة",
+                slide: "الدرس الأول: العبادة وطاعتها - بيان مفهوم العبادة الشامل لكل ما يحبه الله ويرضاه.",
+                cardFront: "ما هي ركائز العبادة القلبية الثلاث؟",
+                cardBack: "المحبة، والخوف، والرجاء.",
+                quizQ: "العبادة هي اسم جامع لكل ما يحبه الله ويرضاه من الأقوال والأعمال:",
+                options: ["الظاهرة فقط", "الباطنة فقط", "الظاهرة والباطنة"],
+                correctIndex: 2
+            },
+            tafsir: {
+                title: "مادة التفسير ومبادئه",
+                slide: "الدرس الأول: مبادئ علم التفسير ونشأته وأهميته للمسلم لتدبر آيات الله.",
+                cardFront: "ما معنى التفسير في الاصطلاح؟",
+                cardBack: "بيان معاني القرآن الكريم وكشف المراد منها.",
+                quizQ: "أول من صنف في علم التفسير بشكل مستقل ومسند هم:",
+                options: ["أئمة الحديث", "علماء الفقه", "المؤرخون"],
+                correctIndex: 0
+            },
+            hadith: {
+                title: "مادة الحديث الشريف والسيرة",
+                slide: "الدرس الأول: عناية المسلمين بالسنّة النبوية الشريفة وتدوينها لحفظ الدين.",
+                cardFront: "من هو الملقب بـ أمير المؤمنين في الحديث؟",
+                cardBack: "الإمام البخاري رحمه الله.",
+                quizQ: "السنّة النبوية هي المصدر (...) من مصادر التشريع الإسلامي:",
+                options: ["الأول", "الثاني", "الثالث"],
+                correctIndex: 1
+            },
+            fiqh: {
+                title: "مادة الفقه والأحكام",
+                slide: "الدرس الأول: مقدمة في الفقه الطهارة - المياه وأقسامها وما يصح التطهر به.",
+                cardFront: "ما هو الماء الطهور؟",
+                cardBack: "هو الماء الباقي على خلقته التي خلقه الله عليها.",
+                quizQ: "إذا تغير طعم الماء أو لونه أو ريحه بنجاسة فإنه يصبح ماءً:",
+                options: ["طهوراً", "طاهراً غير مطهر", "نجساً"],
+                correctIndex: 2
+            }
+        };
+
+        let currentCorrect = 0;
+
+        function loadSubject(key, element) {
+            // إزالة الحالة النشطة من الكروت الأخرى
+            document.querySelectorAll('.subject-card').forEach(card => card.classList.remove('active'));
+            // تفعيل الكرت الحالي
+            element.classList.add('active');
+
+            const data = subjectsData[key];
+            
+            // تعبئة البيانات في الواجهة التفاعلية
+            document.getElementById('selected-subject-title').innerText = data.title;
+            document.getElementById('slide-text').innerText = data.slide;
+            document.getElementById('card-front-text').innerText = data.cardFront;
+            document.getElementById('card-back-text').innerText = data.cardBack;
+            document.getElementById('quiz-question').innerText = data.quizQ;
+            
+            // إرجاع الفلاش كارد لوجهها الأول إن كانت مقلوبة
+            document.getElementById('flashcard').classList.remove('flipped');
+
+            // بناء الخيارات للكويز السريع
+            const optionsBox = document.getElementById('quiz-options');
+            optionsBox.innerHTML = '';
+            document.getElementById('feedback-msg').innerText = '';
+            currentCorrect = data.correctIndex;
+
+            data.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = function() { checkAnswer(idx, btn); };
+                optionsBox.appendChild(btn);
+            });
+
+            // إظهار صندوق المحتوى كاملاً بشكل سلس
+            const displayArea = document.getElementById('content-display-area');
+            displayArea.style.display = 'block';
+            displayArea.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // تفاعل قلب البطاقة الذكية
+        function toggleCard() {
+            document.getElementById('flashcard').classList.toggle('flipped');
+        }
+
+        // تفاعل تصحيح الاختبار الفوري
+        function checkAnswer(selectedIndex, clickedBtn) {
+            const buttons = document.querySelectorAll('.option-btn');
+            const feedback = document.getElementById('feedback-msg');
+            
+            // تجميد الأزرار بعد الإجابة
+            buttons.forEach(btn => btn.disabled = true);
+
+            if(selectedIndex === currentCorrect) {
+                clickedBtn.classList.add('correct');
+                feedback.innerHTML = "<span style='color: var(--success);'><i class='fa-solid fa-circle-check'></i> إجابة ممتازة وصحيحة! بارك الله فيك.</span>";
+            } else {
+                clickedBtn.classList.add('wrong');
+                buttons[currentCorrect].classList.add('correct'); // إظهار الإجابة الصحيحة للطالب
+                feedback.innerHTML = "<span style='color: var(--error);'><i class='fa-solid fa-circle-xmark'></i> إجابة خاطئة، حاول مجدداً في الدرس القادم.</span>";
+            }
+        }
+    </script>
+</body>
+</html>
+ = document.querySelectorAll('.option-btn');
+            const feedback = document.getElementById('feedback-msg');
+            
+            // تجميد الأزرار بعد الإجابة
+            buttons.forEach(btn => btn.disabled = true);
+
+            if(selectedIndex === currentCorrect) {
+                clickedBtn.classList.add('correct');
+                feedback.innerHTML = "<span style='color: var(--success);'><i class='fa-solid fa-circle-check'></i> إجابة ممتازة وصحيحة! بارك الله فيك.</span>";
+            } else {
+                clickedBtn.classList.add('wrong');
+                buttons[currentCorrect].classList.add('correct'); // إظهار الإجابة الصحيحة للطالب
+                feedback.innerHTML = "<span style='color: var(--error);'><i class='fa-solid fa-circle-xmark'></i> إجابة خاطئة، حاول مجدداً في الدرس القادم.</span>";
+            }
+        }
+    </script>
+</body>
+</html>
+
