@@ -1951,22 +1951,3 @@
     </script>
 </body>
 </html>
- = document.querySelectorAll('.option-btn');
-            const feedback = document.getElementById('feedback-msg');
-            
-            // تجميد الأزرار بعد الإجابة
-            buttons.forEach(btn => btn.disabled = true);
-
-            if(selectedIndex === currentCorrect) {
-                clickedBtn.classList.add('correct');
-                feedback.innerHTML = "<span style='color: var(--success);'><i class='fa-solid fa-circle-check'></i> إجابة ممتازة وصحيحة! بارك الله فيك.</span>";
-            } else {
-                clickedBtn.classList.add('wrong');
-                buttons[currentCorrect].classList.add('correct'); // إظهار الإجابة الصحيحة للطالب
-                feedback.innerHTML = "<span style='color: var(--error);'><i class='fa-solid fa-circle-xmark'></i> إجابة خاطئة، حاول مجدداً في الدرس القادم.</span>";
-            }
-        }
-    </script>
-</body>
-</html>
-
