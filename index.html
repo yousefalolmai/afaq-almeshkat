@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة آفاق المشكاة التعليمية</title>
+    <title>منصة آفاق المشكاة للعلوم الإسلامية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
+            --primary: #0f3460;
+            --primary-dark: #0a2545;
             --accent: #16a085;
-            --bg: #f5f7fa;
+            --bg: #f8fafc;
             --card-bg: #ffffff;
-            --text: #34495e;
+            --text: #334155;
+            --gold: #cda250;
         }
 
         * {
@@ -27,72 +30,159 @@
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            padding-bottom: 40px;
         }
 
-        header {
-            background: linear-gradient(135deg, var(--primary), #34495e);
-            color: white;
+        .navbar {
+            background-color: var(--card-bg);
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-align: center;
-            padding: 40px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-direction: column;
         }
 
-        header h1 {
-            font-size: 2.2rem;
+        .brand-logo {
+            width: 55px;
+            height: 55px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 8px rgba(15, 52, 96, 0.2);
+        }
+
+        .brand-text h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
             font-weight: 900;
-            margin-bottom: 10px;
         }
 
-        header p {
+        .brand-text p {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 700;
             font-size: 1.1rem;
-            opacity: 0.9;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .top-reg-btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(15, 52, 96, 0.15);
+            transition: background 0.3s, transform 0.2s;
+            margin: 15px 0;
+        }
+
+        .top-reg-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         .container {
-            max-width: 800px;
-            margin: 30px auto;
+            max-width: 900px;
+            margin: 20px auto 40px auto;
             padding: 0 20px;
         }
 
-        .nav-subjects {
+        /* تنسيق أوراق العمل التفاعلية الجديد */
+        .worksheet-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 15px;
-            margin-bottom: 30px;
+            margin: 25px 0;
         }
 
-        .sub-btn {
+        .worksheet-card {
             background: var(--card-bg);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 15px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
+            padding: 20px;
+            text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        .sub-btn:hover, .sub-btn.active {
-            background: var(--primary);
-            color: white;
+        .worksheet-card:hover {
+            border-color: var(--gold);
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.05);
         }
 
-        .main-card {
+        .worksheet-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .worksheet-card h3 {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .worksheet-card p {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .quiz-popup {
             background: var(--card-bg);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border-right: 6px solid var(--gold);
             display: none;
         }
 
-        .main-card.active {
+        .quiz-popup.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         @keyframes fadeIn {
@@ -100,119 +190,51 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .subject-title {
+        .quiz-title {
             color: var(--primary);
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            font-size: 1.6rem;
-        }
-
-        .section-box {
-            background: #f8fafc;
-            border-right: 5px solid var(--accent);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-        }
-
-        .section-box h3 {
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        /* البطاقة الذكية التفاعلية */
-        .flashcard-wrapper {
-            perspective: 1000px;
-            margin: 30px auto;
-            max-width: 400px;
-            height: 200px;
-        }
-
-        .flashcard {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.6s;
-            cursor: pointer;
-        }
-
-        .flashcard.flipped {
-            transform: rotateY(180deg);
-        }
-
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 15px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            gap: 10px;
         }
 
-        .card-front {
-            background: linear-gradient(135deg, #16a085, #1abc9c);
-            color: white;
-        }
-
-        .card-back {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: white;
-            transform: rotateY(180deg);
-        }
-
-        .card-hint {
-            font-size: 0.8rem;
-            margin-top: 15px;
-            opacity: 0.8;
-            background: rgba(255,255,255,0.2);
-            padding: 3px 10px;
-            border-radius: 20px;
-        }
-
-        /* اختبار الكويز */
-        .quiz-section {
-            background: #fff;
-            border: 1px solid #e2e8f0;
+        .question-block {
+            background: #f8fafc;
             padding: 20px;
             border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e2e8f0;
         }
 
-        .quiz-question {
+        .question-text {
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 15px;
+            font-size: 1.05rem;
             color: var(--primary);
+            margin-bottom: 12px;
         }
 
         .options-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .option-btn {
             background: #fff;
-            border: 2px solid #cbd5e1;
-            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            padding: 10px 15px;
             border-radius: 8px;
             cursor: pointer;
             text-align: right;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             transition: all 0.2s;
         }
 
         .option-btn:hover {
             background: #f1f5f9;
-            border-color: #94a3b8;
+            border-color: #cbd5e1;
         }
 
         .option-btn.correct {
@@ -227,32 +249,31 @@
             color: #991b1b !important;
         }
 
-        .feedback {
-            margin-top: 15px;
+        .feedback-text {
+            margin-top: 10px;
             font-weight: 700;
-            min-height: 24px;
+            font-size: 0.9rem;
         }
 
-        /* صندوق التسجيل الاختياري - متناسق مع التصميم الأول */
         .registration-section {
             background: var(--card-bg);
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-top: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
             border-top: 4px solid var(--primary);
+            margin-top: 40px;
         }
 
         .registration-section h2 {
             color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 6px;
             text-align: center;
         }
 
         .registration-section p {
             text-align: center;
-            color: #7f8c8d;
+            color: #64748b;
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
@@ -263,7 +284,7 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 600;
             color: var(--text);
             font-size: 0.9rem;
@@ -272,16 +293,10 @@
         .form-control {
             width: 100%;
             padding: 12px;
-            border: 2px solid #cbd5e1;
+            border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 1rem;
             font-family: 'Cairo', sans-serif;
-            transition: border-color 0.3s;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
         }
 
         .submit-btn {
@@ -295,178 +310,309 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s;
-            margin-top: 10px;
         }
 
-        .submit-btn:hover {
-            background: #117a65;
+        .submit-btn:hover { background: #117a65; }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
         }
 
+        .social-channels {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .social-icon:hover { background-color: var(--gold); }
+
+        .footer-divider {
+            border: 0;
+            height: 1px;
+            background: rgba(255,255,255,0.15);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .copyright { font-size: 0.9rem; opacity: 0.7; }
+        .tech-support { color: var(--gold); font-size: 0.85rem; font-weight: 600; }
+        
         @media (max-width: 600px) {
-            .nav-subjects { grid-template-columns: 1fr; }
-            header h1 { font-size: 1.8rem; }
+            .worksheet-grid { grid-template-columns: 1fr; }
+            .brand-text h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>منصة آفاق المشكاة التعليمية</h1>
-        <p>تصفح المواد، راجع بذكاء، واختبر معلوماتك فوراً</p>
-    </header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="brand-section">
+                <div class="brand-logo"><i class="fa-solid fa-book-quran"></i></div>
+                <div class="brand-text">
+                    <h1>منصة آفاق المشكاة</h1>
+                    <p>للعلوم الإسلامية - الصف الثاني متوسط</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="scrollToSection('home')">الرئيسية</a></li>
+                <li><a href="#" onclick="scrollToSection('worksheets-section')">أوراق العمل التفاعلية</a></li>
+                <li><a href="#" onclick="scrollToSection('contact')">تواصل معنا</a></li>
+            </ul>
+            <a href="#" class="top-reg-btn" onclick="scrollToSection('reg-section')">
+                <i class="fa-regular fa-comments"></i> تسجيل سريع
+            </a>
+        </div>
+    </nav>
 
-    <div class="container">
+    <div class="container" id="home">
         
-        <!-- أزرار التنقل بين المواد -->
-        <div class="nav-subjects">
-            <button class="sub-btn" onclick="switchSubject('touhid')">التوحيد</button>
-            <button class="sub-btn" onclick="switchSubject('hadith')">الحديث</button>
-            <button class="sub-btn" onclick="switchSubject('fiqh')">الفقه</button>
-        </div>
-
-        <!-- قسم مادة التوحيد -->
-        <div id="touhid" class="main-card">
-            <h2 class="subject-title">مادة التوحيد</h2>
-            <div class="section-box">
-                <h3>💡 ملخص الدرس</h3>
-                <p>العبادة هي كل ما يحبه الله ويرضاه من الأقوال والأعمال الظاهرة والباطنة. والدليل على وجوب إخلاص العبادة لله وحده قوله تعالى: "وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ".</p>
-            </div>
+        <div id="worksheets-section">
+            <h2 style="color: var(--primary); margin-bottom: 10px; border-bottom: 3px solid var(--gold); padding-bottom: 5px;">📝 أوراق العمل الاختبارية (الفصل الأول)</h2>
+            <p style="color: #64748b; margin-bottom: 20px;">اضغط على أي ورقة عمل بالأسفل لتفتح لك الأسئلة التفاعلية وتختبر معلوماتك فوراً:</p>
             
-            <div class="flashcard-wrapper">
-                <div class="flashcard" onclick="toggleCard(this)">
-                    <div class="card-face card-front">
-                        <h3>سؤال للمراجعة الذكية</h3>
-                        <p>ما هو تعريف العبادة؟</p>
-                        <span class="card-hint">اضغط لرؤية الإجابة 🔄</span>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>الإجابة النموذجية</h3>
-                        <p>كل ما يحبه الله ويرضاه من الأقوال والأعمال الظاهرة والباطنة.</p>
-                    </div>
+            <!-- شبكة اختيار أوراق العمل -->
+            <div class="worksheet-grid">
+                <div class="worksheet-card" onclick="openWorksheet('sheet1')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>ورقة عمل رقم 1</h3>
+                    <p>القدوس، الإيمان، الحياء، التوحيد</p>
+                </div>
+                <div class="worksheet-card" onclick="openWorksheet('sheet2')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>ورقة عمل رقم 2</h3>
+                    <p>شرائع الأنبياء، الغلو، الجمعة، الزكاة</p>
+                </div>
+                <div class="worksheet-card" onclick="openWorksheet('sheet3')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>ورقة عمل رقم 3</h3>
+                    <p>خصائص النبي، المنافقين، بهيمة الأنعام</p>
+                </div>
+                <div class="worksheet-card" onclick="openWorksheet('sheet4')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>ورقة عمل رقم 4</h3>
+                    <p>عيسى عليه السلام، زكاة الحبوب والثمار</p>
+                </div>
+                <div class="worksheet-card" onclick="openWorksheet('sheet5')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>ورقة عمل رقم 5</h3>
+                    <p>الملائكة، مقدار زكاة الأثمان، حسن الظن</p>
+                </div>
+                <div class="worksheet-card" onclick="openWorksheet('sheet6')">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <h3>ورقة عمل رقم 6</h3>
+                    <p>الغلو في الصالحين، عروض التجارة، الأسهم</p>
                 </div>
             </div>
 
-            <div class="quiz-section">
-                <p class="quiz-question">س: ما حكم صرف أي نوع من أنواع العبادة لغير الله؟</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="checkAnswer(this, false, 'touhid-feedback')">مستحب</button>
-                    <button class="option-btn" onclick="checkAnswer(this, true, 'touhid-feedback')">شرك أكبر مخرج من الملة</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false, 'touhid-feedback')">شرك أصغر</button>
+            <!-- عرض محتوى ورقة العمل 1 تفاعلياً -->
+            <div id="sheet1" class="quiz-popup">
+                <h3 class="quiz-title"><i class="fa-solid fa-pen-to-square"></i> أسئلة ورقة عمل رقم 1</h3>
+                
+                <div class="question-block">
+                    <p class="question-text">س1: ما معنى اسم الله القدوس؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's1-q1')">المنزه من كل نقص</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's1-q1')">الذي يضع الأشياء في مواضعها</button>
+                    </div>
+                    <div id="s1-q1" class="feedback-text"></div>
                 </div>
-                <div id="touhid-feedback" class="feedback"></div>
+
+                <div class="question-block">
+                    <p class="question-text">س2: صح أم خطأ: الإيمان هو اعتقاد بالقلب فقط؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's1-q2')">صح</button>
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's1-q2')">خطأ (هو اعتقاد بالقلب وقول باللسان وعمل بالجوارح)</button>
+                    </div>
+                    <div id="s1-q2" class="feedback-text"></div>
+                </div>
+
+                <div class="question-block">
+                    <p class="question-text">س3: ما هي أعلى شعب الإيمان؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's1-q3')">كلمة التوحيد (قول لا إله إلا الله)</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's1-q3')">الحياء</button>
+                    </div>
+                    <div id="s1-q3" class="feedback-text"></div>
+                </div>
             </div>
+
+            <!-- عرض محتوى ورقة العمل 2 تفاعلياً -->
+            <div id="sheet2" class="quiz-popup">
+                <h3 class="quiz-title"><i class="fa-solid fa-pen-to-square"></i> أسئلة ورقة عمل رقم 2</h3>
+                
+                <div class="question-block">
+                    <p class="question-text">س1: مجاوزة الحد في الأنبياء وتجاوز رتبتهم تسمى:</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's2-q1')">المحبة والاحترام</button>
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's2-q1')">الغلو</button>
+                    </div>
+                    <div id="s2-q1" class="feedback-text"></div>
+                </div>
+
+                <div class="question-block">
+                    <p class="question-text">س2: من هو الخليفة الذي زاد الأذان الأول لصلاة الجمعة؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's2-q2')">عمر بن الخطاب رضي الله عنه</button>
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's2-q2')">عثمان بن عفان رضي الله عنه</button>
+                    </div>
+                    <div id="s2-q2" class="feedback-text"></div>
+                </div>
+            </div>
+
+            <!-- عرض محتوى ورقة العمل 3 تفاعلياً -->
+            <div id="sheet3" class="quiz-popup">
+                <h3 class="quiz-title"><i class="fa-solid fa-pen-to-square"></i> أسئلة ورقة عمل رقم 3</h3>
+                
+                <div class="question-block">
+                    <p class="question-text">س1: ما هي أفضل وسيلة للحذر والوقاية من المنافقين؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's3-q1')">معرفة صفاتهم وعلاماتهم المتعددة</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's3-q1')">الابتعاد عن مجالس العلم</button>
+                    </div>
+                    <div id="s3-q1" class="feedback-text"></div>
+                </div>
+
+                <div class="question-block">
+                    <p class="question-text">س2: ما هو أول نصاب زكاة الغنم السائمة؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's3-q2')">30 رأس من الغنم</button>
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's3-q2')">40 رأس من الغنم كاملة</button>
+                    </div>
+                    <div id="s3-q2" class="feedback-text"></div>
+                </div>
+            </div>
+
+            <!-- عرض محتوى ورقة العمل 4 تفاعلياً -->
+            <div id="sheet4" class="quiz-popup">
+                <h3 class="quiz-title"><i class="fa-solid fa-pen-to-square"></i> أسئلة ورقة عمل رقم 4</h3>
+                
+                <div class="question-block">
+                    <p class="question-text">س1: عيسى عليه السلام هو:</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's4-q1')">عبد الله ورسوله ومن أولي العزم من الرسل</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's4-q1')">خاتم الأنبياء والمرسلين</button>
+                    </div>
+                    <div id="s4-q1" class="feedback-text"></div>
+                </div>
+
+                <div class="question-block">
+                    <p class="question-text">س2: ما حكم الاستغفار والطلب للمنافقين بعد موتها؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's4-q2')">لا يجوز قطعا ومحرم</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's4-q2')">جائز مستحب</button>
+                    </div>
+                    <div id="s4-q2" class="feedback-text"></div>
+                </div>
+            </div>
+
+            <!-- عرض محتوى ورقة العمل 5 تفاعلياً -->
+            <div id="sheet5" class="quiz-popup">
+                <h3 class="quiz-title"><i class="fa-solid fa-pen-to-square"></i> أسئلة ورقة عمل رقم 5</h3>
+                
+                <div class="question-block">
+                    <p class="question-text">س1: كم مقدار زكاة الأثمان (الذهب والفضة والأوراق النقدية)؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's5-q1')">العشر كاملاً</button>
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's5-q1')">ربع العشر (ما يعادل 2.5%)</button>
+                    </div>
+                    <div id="s5-q1" class="feedback-text"></div>
+                </div>
+
+                <div class="question-block">
+                    <p class="question-text">س2: ما هو الفرق بين حسن الظن بالله والغرور؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's5-q2')">حسن الظن يكون مع العمل الصالح، والغرور تمني المغفرة مع المعاصي</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's5-q2')">لا يوجد فرق بينهما كلاهما واحد</button>
+                    </div>
+                    <div id="s5-q2" class="feedback-text"></div>
+                </div>
+            </div>
+
+            <!-- عرض محتوى ورقة العمل 6 تفاعلياً -->
+            <div id="sheet6" class="quiz-popup">
+                <h3 class="quiz-title"><i class="fa-solid fa-pen-to-square"></i> أسئلة ورقة عمل رقم 6</h3>
+                
+                <div class="question-block">
+                    <p class="question-text">س1: ما المقصود بعروض التجارة؟</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's6-q1')">كل ما أعد للبيع والشراء من أجل كسب الربح</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's6-q1')">المنزل الخاص الذي يسكنه المسلم</button>
+                    </div>
+                    <div id="s6-q1" class="feedback-text"></div>
+                </div>
+
+                <div class="question-block">
+                    <p class="question-text">س2: الأسهم التي تشتري بقصد بيعها وشراء غيرها للربح السريع (المضاربة) تزكى معاملة:</p>
+                    <div class="options-list">
+                        <button class="option-btn" onclick="checkAnswer(this, true, 's6-q2')">عروض التجارة (تزكى قيمتها السوقية السنوية بنسبة 2.5%)</button>
+                        <button class="option-btn" onclick="checkAnswer(this, false, 's6-q2')">لا زكاة فيها مطلقا</button>
+                    </div>
+                    <div id="s6-q2" class="feedback-text"></div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- قسم مادة الحديث -->
-        <div id="hadith" class="main-card">
-            <h2 class="subject-title">مادة الحديث</h2>
-            <div class="section-box">
-                <h3>💡 ملخص الدرس</h3>
-                <p>عن أمير المؤمنين عمر بن الخطاب رضي الله عنه قال: سمعت رسول الله ﷺ يقول: "إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى...". يظهر الحديث أهمية النية وأنها معيار قبول الأعمال أو ردها.</p>
-            </div>
-
-            <div class="flashcard-wrapper">
-                <div class="flashcard" onclick="toggleCard(this)">
-                    <div class="card-face card-front">
-                        <h3>سؤال للمراجعة الذكية</h3>
-                        <p>من هو راوي حديث "إنما الأعمال بالنيات"؟</p>
-                        <span class="card-hint">اضغط لرؤية الإجابة 🔄</span>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>الإجابة النموذجية</h3>
-                        <p>أمير المؤمنين أبو حفص عمر بن الخطاب رضي الله عنه.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quiz-section">
-                <p class="quiz-question">س: ما هي الفائدة الأساسية من اشتراط النية في العبادات؟</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="checkAnswer(this, true, 'hadith-feedback')">تمييز العبادات عن العادات وتمييز العبادات بعضها عن بعض</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false, 'hadith-feedback')">تخفيف مشقة العبادة على المسلم</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false, 'hadith-feedback')">زيادة وقت العبادة</button>
-                </div>
-                <div id="hadith-feedback" class="feedback"></div>
-            </div>
-        </div>
-
-        <!-- قسم مادة الفقه -->
-        <div id="fiqh" class="main-card">
-            <h2 class="subject-title">مادة الفقه</h2>
-            <div class="section-box">
-                <h3>💡 ملخص الدرس</h3>
-                <p>الصلاة هي الركن الثاني من أركان الإسلام، وهي عماد الدين. شروط الصلاة تسعة، منها: الإسلام، العقل، التمييز، رفع الحدث، إزالة النجاسة، ستر العورة، دخول الوقت، استقبال القبلة، والنية.</p>
-            </div>
-
-            <div class="flashcard-wrapper">
-                <div class="flashcard" onclick="toggleCard(this)">
-                    <div class="card-face card-front">
-                        <h3>سؤال للمراجعة الذكية</h3>
-                        <p>كم عدد شروط الصلاة؟</p>
-                        <span class="card-hint">اضغط لرؤية الإجابة 🔄</span>
-                    </div>
-                    <div class="card-face card-back">
-                        <h3>الإجابة النموذجية</h3>
-                        <p>شروط الصلاة تسعة شروط كاملة لا تصح الصلاة بدونها عند القدرة.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="quiz-section">
-                <p class="quiz-question">س: أي مما يلي يعتبر من شروط الصلاة وليس من أركانها؟</p>
-                <div class="options-list">
-                    <button class="option-btn" onclick="checkAnswer(this, false, 'fiqh-feedback')">الركوع والتمكين فيه</button>
-                    <button class="option-btn" onclick="checkAnswer(this, false, 'fiqh-feedback')">قراءة الفاتحة في كل ركعة</button>
-                    <button class="option-btn" onclick="checkAnswer(this, true, 'fiqh-feedback')">دخول الوقت واستقبال القبلة</button>
-                </div>
-                <div id="fiqh-feedback" class="feedback"></div>
-            </div>
-        </div>
-
-        <!-- صندوق التسجيل الاختياري في أسفل المنصة -->
-        <div class="registration-section">
+        <!-- صندوق التسجيل الاختياري السفلي -->
+        <div class="registration-section" id="reg-section">
             <h2>📝 تسجيل طالب جديد (اختياري)</h2>
             <p>إذا كنت ترغب في توثيق اسمك ومتابعة أدائك مع المعلم، يرجى ملء البيانات التالية:</p>
-            
             <div class="form-group">
                 <label for="student-name">اسم الطالب الثلاثي:</label>
                 <input type="text" id="student-name" class="form-control" placeholder="مثال: محمد بن أحمد العلي">
             </div>
-            
-            <div class="form-group">
-                <label for="student-email">البريد الإلكتروني (إن وجد):</label>
-                <input type="email" id="student-email" class="form-control" placeholder="name@example.com">
-            </div>
-            
             <div class="form-group">
                 <label for="student-phone">رقم جوال (ولي الأمر):</label>
                 <input type="tel" id="student-phone" class="form-control" placeholder="05xxxxxxxx">
             </div>
-            
             <button class="submit-btn" onclick="sendRegistration()">إرسال البيانات والتسجيل عبر الواتساب</button>
         </div>
 
     </div>
 
+    <footer id="contact">
+        <p>يسعدنا استقبال استفساراتكم واقتراحاتكم لتطوير المنصة مباشرة عبر القنوات التالية:</p>
+        <div class="social-channels">
+            <a href="https://wa.me/966500000000" target="_blank" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:yousef@example.com" class="social-icon"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+        <hr class="footer-divider">
+        <p class="copyright">&copy; 2026 منصة آفاق المشكاة التعليمية. جميع الحقوق محفوظة.</p>
+        <p class="tech-support">تطوير تقني متميز ودعم مستمر</p>
+    </footer>
+
     <script>
-        // التبديل بين المواد
-        function switchSubject(subjectId) {
-            document.querySelectorAll('.main-card').forEach(card => card.classList.remove('active'));
-            document.querySelectorAll('.sub-btn').forEach(btn => btn.classList.remove('active'));
-            
-            const selectedCard = document.getElementById(subjectId);
-            if(selectedCard) {
-                selectedCard.classList.add('active');
-                event.currentTarget.classList.add('active');
+        // دالة فتح ورقة العمل وإخفاء الباقي
+        function openWorksheet(sheetId) {
+            document.querySelectorAll('.quiz-popup').forEach(popup => {
+                popup.classList.remove('active');
+            });
+            const targetSheet = document.getElementById(sheetId);
+            if(targetSheet) {
+                targetSheet.classList.add('active');
+                targetSheet.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // قلب البطاقة الذكية
-        function toggleCard(cardElement) {
-            cardElement.classList.toggle('flipped');
-        }
-
-        // التحقق من إجابات الكويز
+        // دالة التحقق من الإجابات التفاعلية
         function checkAnswer(btnElement, isCorrect, feedbackId) {
             const parent = btnElement.parentElement;
             const buttons = parent.querySelectorAll('.option-btn');
@@ -477,45 +623,35 @@
                 if(btn === btnElement) {
                     if(isCorrect) {
                         btn.classList.add('correct');
-                        feedback.textContent = "🎉 إجابة صحيحة، أحسنت وبارك الله فيك!";
-                        feedback.style.color = "#10b981";
+                        feedback.innerHTML = `<span style="color: #10b981;">🎉 إجابة صحيحة وممتازة! بارك الله فيك.</span>`;
                     } else {
                         btn.classList.add('wrong');
-                        feedback.textContent = "❌ إجابة خاطئة، حاول مرة أخرى في المراجعة الذكية.";
-                        feedback.style.color = "#ef4444";
+                        feedback.innerHTML = `<span style="color: #ef4444;">❌ إجابة خاطئة، راجع كتابك المدرسي بانتظام.</span>`;
                     }
+                }
+                // تلوين الخيار الصحيح للثقافة العامة
+                if(btn.getAttribute('onclick').includes('true')) {
+                    btn.classList.add('correct');
                 }
             });
         }
 
-        // إرسال بيانات التسجيل عبر الواتساب
-        function sendRegistration() {
-            const name = document.getElementById('student-name').value.trim();
-            const email = document.getElementById('student-email').value.trim() || 'غير محدد';
-            const phone = document.getElementById('student-phone').value.trim();
-
-            if (!name || !phone) {
-                alert('فضلاً، يرجى كتابة الاسم ورقم الجوال لإتمام التسجيل الاختياري.');
-                return;
-            }
-
-            // ⚠️ استبدل الرقم التالي برقم واتسابك الحقيقي بالصيغة الدولية بدون أصفار أو علامة +
-            const myWhatsappNumber = "966530947424"; 
-
-            const message = `*طلب تسجيل جديد (اختياري) في منصة آفاق المشكاة*\n\n` +
-                            `👤 *اسم الطالب:* ${name}\n` +
-                            `✉️ *البريد الإلكتروني:* ${email}\n` +
-                            `📞 *رقم الجوال:* ${phone}`;
-
-            const whatsappUrl = `https://api.whatsapp.com/send?phone=${myWhatsappNumber}&text=${encodeURIComponent(message)}`;
-            
-            window.open(whatsappUrl, '_blank');
+        function scrollToSection(id) {
+            event.preventDefault();
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // تفعيل مادة التوحيد تلقائياً عند فتح الموقع لأول مرة
-        document.addEventListener("DOMContentLoaded", () => {
-            switchSubject('touhid');
-        });
+        function sendRegistration() {
+            const name = document.getElementById('student-name').value.trim();
+            const phone = document.getElementById('student-phone').value.trim();
+            if (!name || !phone) {
+                alert('فضلاً، يرجى كتابة الاسم ورقم الجوال لإتمام التسجيل.');
+                return;
+            }
+            const myWhatsappNumber = "966500000000"; // قم بتعديله لرقمك
+            const message = `*طلب تسجيل طالب في منصة آفاق المشكاة*\n\n👤 *الاسم:* ${name}\n📞 *الجوال:* ${phone}`;
+            window.open(`https://api.whatsapp.com/send?phone=${myWhatsappNumber}&text=${encodeURIComponent(message)}`, '_blank');
+        }
     </script>
 </body>
 </html>
